@@ -12,14 +12,17 @@ class Table extends React.Component {
             <th>Vote</th>
           </tr>
         </thead>
+
         <tbody>
           {this.props.ProjectNo.map((Project) => {
             return (
-              <tr key={Project.id.toString()}>
-                <th>{Project.id}</th>
-                <td>{Project.name}</td>
-                <td>{Project.voted}</td>
-              </tr>
+              <div className="cikti">
+                <tr className="aaa" key={Project.id.toString()}>
+                  <th className="id">{Project.id}</th>
+                  <td className="ortaİcerik">{Project.name}</td>
+                  <td className="vauleTablo">{Project.voted}</td>
+                </tr>
+              </div>
             );
           })}
         </tbody>

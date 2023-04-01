@@ -283,65 +283,63 @@ class App extends Component {
   render() {
     return (
       <div className="text-center">
-        <h3>Pathfinder (Youtube Content Voting dAPP of Kilopi D.A.O) v0.2</h3>
-
+        <div className="baslik">
+          Pathfinder (Youtube Content Voting dAPP of Kilopi D.A.O) v0.2
+        </div>
+        <div id="votelist">Voting List</div>
+        <br />
+        <div className="newproject">
+          {" "}
+          New Project :{" "}
+          <input
+            style={{ width: "150px", backgroundColor: "#fff0b3" }}
+            value={this.state.projectName}
+            onChange={this.updateProjectName}
+          />{" "}
+          &nbsp; Vote :{" "}
+          <input
+            style={{ width: "150px", backgroundColor: "#fff0b3" }}
+            value={this.state.voteAmount}
+            onChange={this.updateVoteAmount}
+          />{" "}
+          &nbsp;
+          <button
+            className="btn btn-warning"
+            onClick={(event) => {
+              event.preventDefault();
+              this.addProject();
+            }}
+          >
+            Create
+          </button>
+        </div>
+        <div className="vote">
+          {" "}
+          Project No :{" "}
+          <input
+            style={{ width: "150px", backgroundColor: "#fff0b3" }}
+            value={this.state.projectNumara}
+            onChange={this.updateprojectNumara}
+          />{" "}
+          &nbsp; Vote :{" "}
+          <input
+            style={{ width: "150px", backgroundColor: "#fff0b3" }}
+            value={this.state.voteAmountx}
+            onChange={this.updateVoteAmountx}
+          />{" "}
+          &nbsp;
+          <button
+            className="btn btn-warning"
+            onClick={(event) => {
+              event.preventDefault();
+              this.addtoProject();
+            }}
+          >
+            Add
+          </button>
+        </div>
+        <br />
         <div className="kolon1">
-          <h4>Voting List</h4>
-          <br />
-
-          <div className="newproject">
-            {" "}
-            New Project :{" "}
-            <input
-              style={{ width: "150px", backgroundColor: "#fff0b3" }}
-              value={this.state.projectName}
-              onChange={this.updateProjectName}
-            />{" "}
-            &nbsp; Vote :{" "}
-            <input
-              style={{ width: "150px", backgroundColor: "#fff0b3" }}
-              value={this.state.voteAmount}
-              onChange={this.updateVoteAmount}
-            />{" "}
-            &nbsp;
-            <button
-              className="btn btn-warning"
-              onClick={(event) => {
-                event.preventDefault();
-                this.addProject();
-              }}
-            >
-              Create
-            </button>
-          </div>
-
-          <div className="vote">
-            {" "}
-            Project No :{" "}
-            <input
-              style={{ width: "150px", backgroundColor: "#fff0b3" }}
-              value={this.state.projectNumara}
-              onChange={this.updateprojectNumara}
-            />{" "}
-            &nbsp; Vote :{" "}
-            <input
-              style={{ width: "150px", backgroundColor: "#fff0b3" }}
-              value={this.state.voteAmountx}
-              onChange={this.updateVoteAmountx}
-            />{" "}
-            &nbsp;
-            <button
-              className="btn btn-warning"
-              onClick={(event) => {
-                event.preventDefault();
-                this.addtoProject();
-              }}
-            >
-              Add
-            </button>
-          </div>
-          <br />
-
           <div id="table-left">
             {this.state.loading ? (
               <p className="text-center">Loading...</p>
@@ -350,21 +348,18 @@ class App extends Component {
             )}
           </div>
         </div>
-        <div className="vl"></div>
-
+        <div className="publishTotalburn">
+          <div className="publishVideos">Published Videos</div>
+          <div className="totalBurn">
+            Total Burnt LOP Tokens ={this.state.datax}
+          </div>
+        </div>
         <div className="kolon2">
-          <h4 className="h4">Published Videos</h4>
-          <br />
-          <h4 className="h4">Total Burnt LOP Tokens</h4>
-          <h4 className="h44">{this.state.datax}</h4>
-          <br />
-          <h5 className="h5">
-            {this.state.loading ? (
-              <p className="text-center">Loading...</p>
-            ) : (
-              <Content2 ProjectNo2={this.state.ProjectNo2} />
-            )}
-          </h5>
+          {this.state.loading ? (
+            <p className="text-center">Loading...</p>
+          ) : (
+            <Content2 ProjectNo2={this.state.ProjectNo2} />
+          )}
         </div>
       </div>
     );
