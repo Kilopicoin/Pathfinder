@@ -286,12 +286,16 @@ class App extends Component {
         <div className="baslik">
           Pathfinder (Youtube Content Voting dAPP of Kilopi D.A.O) v0.2
         </div>
-        <div id="votelist">Voting List</div>
+        
         <br />
+        <div class="project">
+        <div id="votelist">Voting List</div>
         <div className="newproject">
           {" "}
+
           New Project :{" "}
           <input
+          
             style={{ width: "150px", backgroundColor: "#fff0b3" }}
             value={this.state.projectName}
             onChange={this.updateProjectName}
@@ -339,6 +343,8 @@ class App extends Component {
           </button>
         </div>
         <br />
+        </div>
+
         <div className="kolon1">
           <div id="table-left">
             {this.state.loading ? (
