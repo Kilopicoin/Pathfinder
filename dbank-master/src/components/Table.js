@@ -4,15 +4,12 @@ import "./Appx.css";
 class Table extends React.Component {
   render() {
     return (
-      <table className="table" id="table">
-        <thead className="thead">
-          <tr className="trx">
-            <th>No</th>
-            <th>Project</th>
-            <th>Vote</th>
-          </tr>
-        </thead>
-
+      <table className="table" id="table-1">
+        <tr className="trx">
+          <th className="th">No</th>
+          <th className="th">Project Request</th>
+          <th className="th">Total Vote</th>
+        </tr>
         <tbody>
           {this.props.ProjectNo.map((Project) => {
             return (
@@ -20,7 +17,7 @@ class Table extends React.Component {
                 <tr className="aaa" key={Project.id.toString()}>
                   <th className="id">{Project.id}</th>
                   <td className="ortaİcerik">{Project.name}</td>
-                  <td className="vauleTablo">{Project.voted}</td>
+                  <td className="vauleTablo">{Project.voted} Lop</td>
                 </tr>
               </div>
             );

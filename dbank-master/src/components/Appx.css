@@ -1,14 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Roboto:wght@100&display=swap");
 html,
 body,
 #root {
   width: 100%;
   height: 100%;
-}
-
-body {
-  display: flex;
-  flex: 1;
-  background: red;
 }
 
 .messages {
@@ -20,9 +15,23 @@ body {
   justify-content: center;
 }
 .text-center {
-  background: #3b3b3b;
+  background: #2b2b2b;
 }
-
+.btn {
+  background-color: #a259ff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 50px;
+  gap: 12px;
+  width: 100px;
+  height: 60px;
+  border: 1px;
+  border-radius: 20px;
+  color: white;
+  font-size: 20px;
+}
 .kolon1 {
   width: 50%;
   min-height: 300px !important;
@@ -30,15 +39,7 @@ body {
   overflow: auto;
   float: left;
 }
-.vote {
-  width: 49%;
-}
-.newproject {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 49%;
-}
+
 .kolon2 {
   width: 50%;
   min-height: 300px !important;
@@ -56,18 +57,19 @@ body {
   padding-bottom: 15px;
   border-radius: 30px;
 }
-
-#votelist {
-  width: 49%;
+a:link {
+  color: white;
+  text-decoration: none;
+}
+a:visited {
+  color: #2b2b2b;
+  text-decoration: none;
 }
 .table {
   background: #2b2b2b;
-  border: none;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  
 }
 #table {
   background: #2b2b2b;
@@ -77,58 +79,99 @@ body {
   position: relative;
   width: 50%;
   float: right;
-  top: -190px;
+  top: -230px;
 }
 .publishVideos {
   border-radius: 20px;
   width: 100%;
   font-size: 30px;
   color: rgb(255, 240, 179);
-  background-image: linear-gradient(to right, #1a1400, #194d00);
+  background: #3b3b3b;
   margin-bottom: 10px;
-  padding: 3px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .totalBurn {
   border-radius: 20px;
   font-size: 30px;
   color: rgb(255, 240, 179);
-  background-image: linear-gradient(to right, #1a1400, #194d00);
+  background: #3b3b3b;
   padding: 25px;
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cikti {
   background: #3b3b3b;
-  border-radius: 32px;
+  border-radius: 28px;
   border: none;
   margin: auto;
-  margin-top: 24px;
+  margin-top: 14px;
+  width: 100%;
+  box-shadow: 0px -1px 19px 2px rgba(0, 0, 0, 1);
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  border: none;
-  box-shadow: 0px -1px 19px 2px rgba(0,0,0,1);
 }
+
 .trx {
-  background: yellow;
-  border: none;
-  width: 100%;
+  background: #2b2b2b;
+  margin: auto;
+  padding: 10px;
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  border-radius: 20px;
+  border: 1.5px solid#636362;
 }
-.thead {
-  background: rgb(0, 0, 0);
+.th {
+  padding-right: 70px;
+  padding-left: 60px;
+  color: #636362;
+}
+.yazigirisi {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 16px 20px;
+  gap: 12px;
+  width: 200px;
+  background: #ffffff;
+  color: black;
+  border-radius: 15px;
+  box-shadow: 0px -1px 19px 2px rgba(0, 0, 0, 1);
+  font-size: 18px;
+}
+element.style {
+  color: white;
+}
+
+#videolink {
+  color: white !important;
 }
 #votelist {
-  font-size: 30px;
+  width: 49%;
+  font-size: 32px;
   color: #ffffff;
-  background-image: linear-gradient(to right, #1a0033, #420080);
+  background: #3b3b3b;
   border-radius: 20px;
   margin-bottom: 24px;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
 }
 .id {
-  width: 204px;
+  padding: 10px;
+  padding-right: 30px;
+  padding-left: 1px;
   height: 31px;
   font-family: "Work Sans";
   font-style: normal;
@@ -141,18 +184,15 @@ body {
   order: 1;
   flex-grow: 1;
   border: none;
-
-  justify-content: center;
 }
 .vauleTablo {
-  width: 100px;
-  height: 22px;
   font-family: "Space Mono";
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 22px;
   line-height: 140%;
-  color: #f7fff8;
+  color: #00ac4f;
+
   flex: none;
   order: 0;
   align-self: stretch;
@@ -164,12 +204,12 @@ body {
   border: none;
 }
 .ortaİcerik {
-  width: 100px;
+  width: 300px;
   height: 22px;
-  font-family: "Space Mono";
+  font-family: "Work Sans";
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 22px;
   line-height: 140%;
   color: #ffffff;
   flex: none;
@@ -178,7 +218,10 @@ body {
   flex-grow: 0;
   border: none;
   justify-content: center;
+  font-family: "Work Sans";
+  font-style: normal;
 }
+
 .id {
   border: none;
 }
@@ -266,31 +309,32 @@ body {
   font-size: 18px;
   color: #ffffff;
   line-height: 21px;
-  background-image: linear-gradient(to right, #1a0033, #420080);
-  margin: 5px;
-  padding: 3px;
-  border-radius: 30px;
-}
-.vote {
-  font-size: 18px;
-  color: #ffffff;
-  line-height: 21px;
-  background-image: linear-gradient(to right, #1a0033, #420080);
+  background: #3b3b3b;
+  margin-bottom: 10px;
   padding: 3px;
   border-radius: 30px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  width: 49%;
+  padding: 3px;
 }
-#table-left {
+.vote {
   font-size: 18px;
   color: #ffffff;
   line-height: 21px;
-  background-image: linear-gradient(to right, #1a0033, #420080);
+  background: #3b3b3b;
   padding: 3px;
   border-radius: 30px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 49%;
 }
-
+#table-2 {
+  position: relative;
+  top: -100px;
+}
 @media only screen and (max-width: 992px) {
   .kolon1 {
     flex-wrap: wrap;

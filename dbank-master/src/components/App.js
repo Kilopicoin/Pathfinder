@@ -3,9 +3,10 @@ import Polly15 from "../abis/Polly15.json";
 import LOP from "../abis/LOP.json";
 import Web3 from "web3";
 //import web3 from './web3';
-import "./App.css";
+import "./Appx.css";
 import Content from "./Content";
 import Content2 from "./Content2";
+import { AlarmAddSharp } from "@mui/icons-material";
 
 class App extends Component {
   constructor(props) {
@@ -20,10 +21,11 @@ class App extends Component {
       datax: "",
       pollyadresi: "0x61412D7b2bEBa95A44fE4d2C3E8599985951f559",
       tokenadresi: "0x1791c97603b4695f53A4f1c02ca0efB74C44b310",
-      projectName: "",
-      projectNumara: "",
+      projectName: "Project Name",
+      projectNumara: "Project Number",
       voteAmount: 1000,
       voteAmountx: 1000,
+      voteinput: "vote",
       ProjectNo: [],
       ProjectNo2: [],
       hasVoted: false,
@@ -284,75 +286,70 @@ class App extends Component {
     return (
       <div className="text-center">
         <div className="baslik">
-          Pathfinder (Youtube Content Voting dAPP of Kilopi D.A.O) v0.2
+          Pathfinder (Youtube Content Voting dAPP of Kilopi D.A.O) v0.3
         </div>
-        
+
         <br />
         <div class="project">
-        <div id="votelist">Voting List</div>
-        <div className="newproject">
-          {" "}
-
-          New Project :{" "}
-          <input
-          
-            style={{ width: "150px", backgroundColor: "#fff0b3" }}
-            value={this.state.projectName}
-            onChange={this.updateProjectName}
-          />{" "}
-          &nbsp; Vote :{" "}
-          <input
-            style={{ width: "150px", backgroundColor: "#fff0b3" }}
-            value={this.state.voteAmount}
-            onChange={this.updateVoteAmount}
-          />{" "}
-          &nbsp;
-          <button
-            className="btn btn-warning"
-            onClick={(event) => {
-              event.preventDefault();
-              this.addProject();
-            }}
-          >
-            Create
-          </button>
-        </div>
-        <div className="vote">
-          {" "}
-          Project No :{" "}
-          <input
-            style={{ width: "150px", backgroundColor: "#fff0b3" }}
-            value={this.state.projectNumara}
-            onChange={this.updateprojectNumara}
-          />{" "}
-          &nbsp; Vote :{" "}
-          <input
-            style={{ width: "150px", backgroundColor: "#fff0b3" }}
-            value={this.state.voteAmountx}
-            onChange={this.updateVoteAmountx}
-          />{" "}
-          &nbsp;
-          <button
-            className="btn btn-warning"
-            onClick={(event) => {
-              event.preventDefault();
-              this.addtoProject();
-            }}
-          >
-            Add
-          </button>
-        </div>
-        <br />
+          <div id="votelist">Voting List</div>
+          <div className="newproject">
+            {" "}
+            <input
+              className="yazigirisi"
+              value={this.state.projectName}
+              onChange={this.updateProjectName}
+            />{" "}
+            &nbsp;
+            <input
+              className="yazigirisi"
+              type="number"
+              value={this.state.voteAmount}
+              onChange={this.updateVoteAmount}
+            />{" "}
+            &nbsp;
+            <button
+              className="btn"
+              onClick={(event) => {
+                event.preventDefault();
+                this.addProject();
+              }}
+            >
+              Create
+            </button>
+          </div>
+          <div className="vote">
+            <input
+              className="yazigirisi"
+              value={this.state.projectNumara}
+              onChange={this.updateprojectNumara}
+            />
+            &nbsp;
+            <input
+              type="number"
+              className="yazigirisi"
+              value={this.state.voteAmountx}
+              onChange={this.updateVoteAmountx}
+            />{" "}
+            &nbsp;
+            <button
+              className="btn"
+              onClick={(event) => {
+                event.preventDefault();
+                this.addtoProject();
+              }}
+            >
+              Add
+            </button>
+          </div>
+          <br />
         </div>
 
         <div className="kolon1">
-          <div id="table-left">
-            {this.state.loading ? (
-              <p className="text-center">Loading...</p>
-            ) : (
-              <Content ProjectNo={this.state.ProjectNo} />
-            )}
-          </div>
+          {this.state.loading ? (
+            <p className="text-center">Loading...</p>
+          ) : (
+            <Content ProjectNo={this.state.ProjectNo} />
+          )}
         </div>
         <div className="publishTotalburn">
           <div className="publishVideos">Published Videos</div>
