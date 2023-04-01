@@ -58,11 +58,11 @@ body {
   width: 49%;
 }
 .table {
-  background: #3b3b3b;
+  background: #2b2b2b;
   border: none;
 }
 #table {
-  background: #3b3b3b;
+  background: #2b2b2b;
   border: none;
 }
 .publishTotalburn {
@@ -91,13 +91,11 @@ body {
 }
 
 .cikti {
-  display: flex;
-  justify-content: center;
-  background: #5c5555;
+  background: #3b3b3b;
   border-radius: 20px;
   border: none;
   margin-top: 10px;
-  width: 100%;
+  width: 200%;
 }
 .trx {
   background: yellow;
@@ -162,6 +160,9 @@ body {
   flex-grow: 0;
   border: none;
   justify-content: center;
+}
+.id {
+  border: none;
 }
 .messageInput {
   margin: 0 10px;
