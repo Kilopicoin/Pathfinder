@@ -6,7 +6,7 @@ import Web3 from "web3";
 import "./Appx.css";
 import Content from "./Content";
 import Content2 from "./Content2";
-import { AlarmAddSharp } from "@mui/icons-material";
+
 
 class App extends Component {
   constructor(props) {

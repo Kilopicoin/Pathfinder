@@ -4,6 +4,8 @@ body,
 #root {
   width: 100%;
   height: 100%;
+  
+  
 }
 
 .messages {
@@ -47,7 +49,8 @@ body,
   overflow: auto;
   float: right;
   position: relative;
-  top: -100px;
+  top:-212px;
+  
 }
 
 .baslik {
@@ -83,12 +86,15 @@ a:visited {
 }
 .publishVideos {
   border-radius: 20px;
-  width: 100%;
-  font-size: 30px;
+  width: 99%;
+  font-size: 32px;
   color: rgb(255, 240, 179);
+  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
   background: #3b3b3b;
-  margin-bottom: 10px;
-  padding: 10px;
+  margin-bottom: 24px;
+  margin-top: 7px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -96,15 +102,22 @@ a:visited {
 
 .totalBurn {
   border-radius: 20px;
-  font-size: 30px;
+  font-size: 24px;
+  font-family: "Montserrat", sans-serif;
+  
+  font-weight: 900;
   color: rgb(255, 240, 179);
   background: #3b3b3b;
   padding: 25px;
   margin-top: 20px;
   display: flex;
+  height: 90px;
   justify-content: center;
   align-items: center;
+  
+  
 }
+
 
 .cikti {
   background: #3b3b3b;
@@ -117,6 +130,9 @@ a:visited {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 56px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
 }
 
 .trx {
@@ -331,10 +347,7 @@ element.style {
   align-items: center;
   width: 49%;
 }
-#table-2 {
-  position: relative;
-  top: -100px;
-}
+
 @media only screen and (max-width: 992px) {
   .kolon1 {
     flex-wrap: wrap;
@@ -362,7 +375,7 @@ element.style {
 
   .kolon2 {
     width: 100%;
-
+   
     float: none;
     overflow: none;
     min-height: none !important;
