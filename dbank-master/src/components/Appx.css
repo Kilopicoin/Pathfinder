@@ -89,7 +89,7 @@ a:visited {
   font-size: 32px;
   color: rgb(255, 240, 179);
   font-family: "Montserrat", sans-serif;
-  
+
   font-weight: 900;
   background: #3b3b3b;
   margin-bottom: 24px;
@@ -157,7 +157,7 @@ a:visited {
   align-items: center;
   padding: 16px 20px;
   gap: 12px;
-  width:100%;
+  width: 100%;
   max-width: 200px;
   background: #ffffff;
   color: black;
@@ -181,7 +181,7 @@ element.style {
   margin-bottom: 24px;
   text-align: center;
   font-family: "Montserrat", sans-serif;
-  
+
   font-weight: 900;
 }
 .id {
@@ -237,7 +237,6 @@ element.style {
   font-family: "Work Sans";
   font-style: normal;
 }
-
 
 .id {
   border: none;
@@ -359,11 +358,35 @@ element.style {
 @media only screen and (max-width: 768px) {
   body {
     padding: 0;
+    overflow-y: scroll;
   }
-  .text-center {
+  .publishTotalburn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 230px;
+  }
+  .totalBurn {
+    width: 90%;
+    font-size: 24px;
+    padding: 25px;
+    margin-top: 0px;
+  }
+
+  .publishVideos {
+    width: 90%;
+    font-size: 24px;
+    padding: 25px;
   }
   .vote {
     width: 100%;
+  }
+
+  .kisim2 {
+    max-width: auto;
+    max-height: 900px;
   }
   .kolon1 {
     width: 100%;
@@ -371,7 +394,7 @@ element.style {
     float: none;
     overflow: none;
     min-height: none !important;
-    max-height: 300px !important;
+    max-height: 600px !important;
   }
 
   .kolon2 {
@@ -380,32 +403,18 @@ element.style {
     float: none;
     overflow: none;
     min-height: none !important;
-    max-height: 450px !important;
+    max-height: 650px !important;
   }
-  #table {
-    width: 100% !important;
-    height: 200px;
-    font-size: 60%;
-    max-height: 200px;
-  }
-  .trx {
-    width: 2% !important;
-    height: 10%;
-    text-align: center;
-  }
+
   .thead {
     width: 5%;
     font-size: 20px;
   }
-  #table-2 {
-    width: 5% !important;
-    height: 10%;
-    font-size: 50%;
+
+  .trx {
+    width: 94%;
   }
-  .trx-2 {
-    width: 2% !important;
-    height: 10%;
-  }
+
   .thead-2 {
     width: 4%;
     font-size: 17px;
@@ -417,15 +426,12 @@ element.style {
     justify-content: center;
     align-items: center;
     width: 100%;
-    
-    
     margin: auto;
   }
 
   #votelist {
     width: 100%;
   }
-
 
   .btn {
     background-color: #a259ff;
@@ -447,17 +453,14 @@ element.style {
     font-weight: 900;
   }
 
-
-  
   .project {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    
+
     margin: auto;
-    
   }
 
   .newproject {
@@ -469,7 +472,7 @@ element.style {
     padding: 3px;
     border-radius: 30px;
     display: flex;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     align-items: center;
     width: 100%;
     padding: 3px;
@@ -485,10 +488,5 @@ element.style {
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
-    
   }
-
-  
-
-  
 }

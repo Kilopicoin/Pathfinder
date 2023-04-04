@@ -7,7 +7,6 @@ import "./Appx.css";
 import Content from "./Content";
 import Content2 from "./Content2";
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -351,18 +350,20 @@ class App extends Component {
             <Content ProjectNo={this.state.ProjectNo} />
           )}
         </div>
-        <div className="publishTotalburn">
-          <div className="publishVideos">Published Videos</div>
-          <div className="totalBurn">
-            Total Burnt LOP Tokens ={this.state.datax}
+        <div className="kisim2">
+          <div className="publishTotalburn">
+            <div className="publishVideos">Published Videos</div>
+            <div className="totalBurn">
+              Total Burnt LOP Tokens ={this.state.datax}
+            </div>
           </div>
-        </div>
-        <div className="kolon2">
-          {this.state.loading ? (
-            <p className="text-center">Loading...</p>
-          ) : (
-            <Content2 ProjectNo2={this.state.ProjectNo2} />
-          )}
+          <div className="kolon2">
+            {this.state.loading ? (
+              <p className="text-center">Loading...</p>
+            ) : (
+              <Content2 ProjectNo2={this.state.ProjectNo2} />
+            )}
+          </div>
         </div>
       </div>
     );
