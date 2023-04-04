@@ -510,6 +510,12 @@ element.style {
     width: 100%;
   }
   #numera {
-    padding-left: 20px;
+    padding-left: 5%;
+  }
+  #numera2 {
+    padding-left: 5%;
+  }
+  .th {
+    padding-left: 15%;
   }
 }

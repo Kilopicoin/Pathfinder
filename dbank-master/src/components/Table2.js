@@ -5,7 +5,7 @@ class Table2 extends React.Component {
     return (
       <table className="table" id="table-2">
         <tr className="trx" id="altbaslik">
-          <th className="th" id="numera">
+          <th className="th" id="numera2">
             No
           </th>
           <th className="th">Video</th>
