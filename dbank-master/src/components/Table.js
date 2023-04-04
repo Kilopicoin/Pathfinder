@@ -6,7 +6,9 @@ class Table extends React.Component {
     return (
       <table className="table" id="table-1">
         <tr className="trx">
-          <th className="th">No</th>
+          <th className="th" id="numera">
+            No
+          </th>
           <th className="th">Project Request</th>
           <th className="th">Total Vote</th>
         </tr>

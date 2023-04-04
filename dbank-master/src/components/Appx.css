@@ -17,6 +17,26 @@ body,
 .text-center {
   background: #2b2b2b;
 }
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #a259ff;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a259ff;
+}
 .btn {
   background-color: #a259ff;
   display: flex;
@@ -488,5 +508,8 @@ element.style {
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
+  }
+  #numera {
+    padding-left: 20px;
   }
 }
