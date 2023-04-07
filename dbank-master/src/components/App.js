@@ -196,6 +196,13 @@ class App extends Component {
       .allowance(this.state.account, this.state.pollyadresi)
       .call();
 
+
+	if ( trnsfrAmnt < 1000000000 ) {
+
+	alert("Can not add less than 1000 votes");
+
+	} else {
+
     if (hak === "0") {
       await this.state.LOPx.methods
         .approve(this.state.pollyadresi, trnsfrAmnt)
@@ -203,10 +210,17 @@ class App extends Component {
           from: this.state.account,
           gasPrice: 101000000000,
         });
+		
       this.state.polly15.methods.addProject(projectName, trnsfrAmnt).send({
         from: this.state.account,
         gasPrice: 101000000000,
-      });
+      }).catch((err) => {
+        window.location.reload(); // instance with the new contract address
+      }).then(function(){
+    window.location.reload(); // instance with the new contract address
+});
+
+
     } else {
       await this.state.LOPx.methods
         .increaseAllowance(this.state.pollyadresi, trnsfrAmnt)
@@ -217,8 +231,20 @@ class App extends Component {
       this.state.polly15.methods.addProject(projectName, trnsfrAmnt).send({
         from: this.state.account,
         gasPrice: 101000000000,
-      });
+      }).catch((err) => {
+        window.location.reload(); // instance with the new contract address
+      }).then(function(){
+    window.location.reload(); // instance with the new contract address
+});
     }
+	
+	
+	
+	
+	}
+	
+	
+	
   }
 
   async addtoProject() {
@@ -227,6 +253,15 @@ class App extends Component {
     const hakx = await this.state.LOPx.methods
       .allowance(this.state.account, this.state.pollyadresi)
       .call();
+
+
+
+	if ( trnsfrAmntx < 1000000000 ) {
+
+	alert("Can not add less than 1000 votes");
+
+	} else {
+
 
     if (hakx === "0") {
       await this.state.LOPx.methods
@@ -238,7 +273,14 @@ class App extends Component {
       this.state.polly15.methods.addtoProject(projectNumara, trnsfrAmntx).send({
         from: this.state.account,
         gasPrice: 101000000000,
-      });
+      }).catch((err) => {
+        window.location.reload(); // instance with the new contract address
+      }).then(function(){
+    window.location.reload(); // instance with the new contract address
+});
+	  
+	  
+	  
     } else {
       await this.state.LOPx.methods
         .increaseAllowance(this.state.pollyadresi, trnsfrAmntx)
@@ -249,8 +291,17 @@ class App extends Component {
       this.state.polly15.methods.addtoProject(projectNumara, trnsfrAmntx).send({
         from: this.state.account,
         gasPrice: 101000000000,
-      });
+      }).catch((err) => {
+        window.location.reload(); // instance with the new contract address
+      }).then(function(){
+    window.location.reload(); // instance with the new contract address
+});
     }
+	
+	
+	}
+	
+	
   }
 
   updateProjectName(evt) {

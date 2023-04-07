@@ -35,7 +35,7 @@ body,
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #a259ff;
+  background: #5b1b5e;
 }
 .btn {
   background-color: #a259ff;
@@ -58,7 +58,7 @@ body,
 .kolon1 {
   width: 50%;
   min-height: 300px !important;
-  max-height: 820px !important;
+  max-height: 670px !important;
   overflow: auto;
   float: left;
 }
@@ -66,7 +66,7 @@ body,
 .kolon2 {
   width: 50%;
   min-height: 300px !important;
-  max-height: 820px !important;
+  max-height: 670px !important;
   overflow: auto;
   float: right;
   position: relative;
@@ -107,7 +107,7 @@ a:visited {
   border-radius: 20px;
   width: 99%;
   font-size: 32px;
-  color: rgb(255, 240, 179);
+  color: white;
   font-family: "Montserrat", sans-serif;
 
   font-weight: 900;
@@ -124,7 +124,7 @@ a:visited {
   font-size: 24px;
   font-family: "Montserrat", sans-serif;
   font-weight: 900;
-  color: rgb(255, 240, 179);
+  color: white;
   background: #3b3b3b;
   padding: 25px;
   margin-top: 20px;
@@ -154,10 +154,7 @@ a:visited {
 .trx {
   background: #2b2b2b;
   margin: auto;
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  padding: 10px;
   font-family: "Space Mono";
   font-style: normal;
   font-weight: 400;
@@ -167,7 +164,8 @@ a:visited {
   border: 1.5px solid#636362;
 }
 .th {
-  
+  padding-right: 70px;
+  padding-left: 60px;
   color: #636362;
   font-family: "Montserrat", sans-serif;
   font-weight: 900;
@@ -435,10 +433,6 @@ element.style {
 
   .trx {
     width: 94%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-
   }
 
   .thead-2 {
