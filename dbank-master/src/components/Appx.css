@@ -4,6 +4,7 @@ body,
 #root {
   width: 100%;
   height: 100%;
+  overflow-y: scroll;
 }
 
 .messages {
@@ -18,7 +19,7 @@ body,
   background: #2b2b2b;
 }
 ::-webkit-scrollbar {
-  width: 20px;
+  width: 15px;
 }
 
 /* Track */
@@ -58,7 +59,7 @@ body,
 .kolon1 {
   width: 50%;
   min-height: 300px !important;
-  max-height: 670px !important;
+  max-height: 650px !important;
   overflow: auto;
   float: left;
 }
@@ -66,7 +67,7 @@ body,
 .kolon2 {
   width: 50%;
   min-height: 300px !important;
-  max-height: 670px !important;
+  max-height: 650px !important;
   overflow: auto;
   float: right;
   position: relative;
