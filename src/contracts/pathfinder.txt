@@ -1,0 +1,344 @@
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity 0.8.13;
+
+interface IHarmLop {
+    function totalSupply() external view returns (uint);
+    function balanceOf(address who) external view returns (uint);
+    function approve(address spender, uint value) external returns (bool);
+    function transfer(address to, uint value) external returns (bool);
+    function transferFrom(address from, address to, uint value) external returns (bool);
+    function burn(uint value) external returns (bool);
+}
+
+library SafeMath {
+
+    /**
+     * @dev Multiplies two numbers, reverts on overflow.
+     */
+    function mul(uint a, uint b) internal pure returns (uint) {
+        // Gas optimization: this is cheaper than requiring 'a' not being zero, but the
+        // benefit is lost if 'b' is also tested.
+        // See: https://github.com/OpenZeppelin/openzeppelin-solidity/pull/522
+        if (a == 0) {
+            return 0;
+        }
+
+        uint c = a * b;
+        require(c / a == b);
+
+        return c;
+    }
+
+    /**
+     * @dev Integer division of two numbers truncating the quotient, reverts on division by zero.
+     */
+    function div(uint a, uint b) internal pure returns (uint) {
+        require(b > 0); // Solidity only automatically asserts when dividing by 0
+        uint c = a / b;
+        // assert(a == b * c + a % b); // There is no case in which this doesn't hold
+
+        return c;
+    }
+
+    /**
+     * @dev Subtracts two numbers, reverts on overflow (i.e. if subtrahend is greater than minuend).
+     */
+    function sub(uint a, uint b) internal pure returns (uint) {
+        require(b <= a);
+        uint c = a - b;
+
+        return c;
+    }
+
+    /**
+     * @dev Adds two numbers, reverts on overflow.
+     */
+    function add(uint a, uint b) internal pure returns (uint) {
+        uint c = a + b;
+        require(c >= a);
+
+        return c;
+    }
+
+    /**
+     * @dev Divides two numbers and returns the remainder (unsigned integer modulo),
+     * reverts when dividing by zero.
+     */
+    function mod(uint a, uint b) internal pure returns (uint) {
+        require(b != 0);
+        return a % b;
+    }
+}
+
+
+
+contract Pathfinder is IHarmLop {
+
+	struct Project{
+        string name;
+        uint256 voted;
+    }
+
+	struct ProjectDone{
+        string name;
+		uint256 burnt;
+		string link;
+    }
+
+    IHarmLop public token;
+	address public owner;
+
+	address public whiteHole; // video service
+	address public stake1Hole;
+	address public stake2Hole;
+	address public daoHole;
+
+
+
+
+
+	// isim icin baslangic
+
+	using SafeMath for uint;
+
+    string public constant name = "Pathfinder";
+    string public constant symbol = "PATH";
+    uint8 public constant decimals = 6;
+    uint public totalSupply = 0;
+    bool public statusWorld = true;
+
+    mapping(address => uint) public balanceOf;
+    mapping(address => mapping(address => uint)) public allowance;
+
+    event Transfer(address indexed from, address indexed to, uint value);
+    event Approval(address indexed owner, address indexed spender, uint value);
+
+
+	// isim icin bitis
+
+
+
+constructor (address white, address stake1, address stake2, address dao, IHarmLop _token) {
+       owner = msg.sender;
+	   whiteHole = white;
+       stake1Hole = stake1;
+	   stake2Hole = stake2;
+	   daoHole = dao;
+       token = _token;
+	   _mint(msg.sender, 1000000);
+        statusWorld = false;
+    }
+
+
+
+
+
+// isim icin baslangic
+
+function approve(address _spender, uint _value) external returns (bool) {
+        allowance[msg.sender][_spender] = _value;
+        emit Approval(msg.sender, _spender, _value);
+        return true;
+    }
+
+    function _mint(address _to, uint _amount) internal returns (bool) {
+        require(statusWorld, "W P");
+        totalSupply += _amount;
+        unchecked {
+            balanceOf[_to] += _amount;
+        }
+        emit Transfer(address(0x0), _to, _amount);
+        return true;
+    }
+
+    function _transfer(address from, address to, uint256 value) internal returns (bool) {
+        require(to != address(0));
+
+        balanceOf[from] = balanceOf[from].sub(value);
+        balanceOf[to] = balanceOf[to].add(value);
+        emit Transfer(from, to, value);
+        return true;
+    }
+
+    function _burn(address account, uint256 value) internal returns (bool) {
+        require(account != address(0));
+
+        totalSupply = totalSupply.sub(value);
+        balanceOf[account] = balanceOf[account].sub(value);
+        emit Transfer(account, address(0), value);
+        return true;
+    }
+
+    function burn(uint value) external returns (bool){
+        _burn(msg.sender, value);
+        return true;
+    }
+
+    function transfer(address _to, uint _value) external returns (bool) {
+        return _transfer(msg.sender, _to, _value);
+    }
+
+    function transferFrom(address _from, address _to, uint _value) external returns (bool) {
+        uint allowed_from = allowance[_from][msg.sender];
+        if (allowed_from != type(uint).max) {
+            allowance[_from][msg.sender] -= _value;
+        }
+        return _transfer(_from, _to, _value);
+    }
+
+    function increaseAllowance(
+        address spender,
+        uint addedValue
+    )
+    public
+    returns (bool)
+    {
+        require(spender != address(0));
+
+        allowance[msg.sender][spender] += addedValue;
+        emit Approval(msg.sender, spender, allowance[msg.sender][spender]);
+        return true;
+    }
+
+    function decreaseAllowance(
+        address spender,
+        uint subtractedValue
+    )
+    public
+    returns (bool)
+    {
+        require(spender != address(0));
+
+        allowance[msg.sender][spender] -= subtractedValue;
+        emit Approval(msg.sender, spender, allowance[msg.sender][spender]);
+        return true;
+    }
+
+// isim icin bitis
+
+
+
+
+
+
+
+
+
+    event e_addProject(address indexed e_recorder, string e_project, uint256 miktar, uint256 zaman);
+	event e_addtoProject(address indexed e_recorder, uint256 e_id, uint256 miktar, uint256 zaman);
+	event e_publishProject(address indexed e_publisher, uint256 e_id, string link, uint256 zaman);
+	
+	uint256 public projectCount;
+	uint256 public projectDoneCount;
+	
+	mapping (uint256 => Project) public ProjectNo;
+	mapping (uint256 => ProjectDone) public ProjectNoDone;
+
+
+
+	function whiteHoleChange (address yeniAdres) public {
+
+		require(msg.sender == owner, "only owner");
+		whiteHole = yeniAdres;
+
+	}
+
+
+	function stake1HoleChange (address yeniAdres) public {
+
+		require(msg.sender == owner, "only owner");
+		stake1Hole = yeniAdres;
+
+	}
+
+
+	function stake2HoleChange (address yeniAdres) public {
+
+		require(msg.sender == owner, "only owner");
+		stake2Hole = yeniAdres;
+
+	}
+
+
+	function daoHoleChange (address yeniAdres) public {
+
+		require(msg.sender == owner, "only owner");
+		daoHole = yeniAdres;
+
+	}
+	
+
+function addProject(string memory namex_, uint256 miktarx_) public {
+		require(miktarx_ >= 1000000, "must be more than 1");
+        require(token.balanceOf(address(msg.sender)) >= miktarx_, "must be more than requested");
+        require(token.transferFrom(msg.sender,(address(this)),miktarx_));
+		projectCount++;
+		ProjectNo[projectCount] = Project(namex_,miktarx_);
+		emit e_addProject(msg.sender, namex_, miktarx_, block.timestamp );
+	}
+
+
+function addtoProject(uint256 toidx_, uint256 miktarrx_) public {
+		require(miktarrx_ >= 1000000, "must be more than 1");
+		require(token.balanceOf(address(msg.sender)) >= miktarrx_, "must be more than requested");
+		require(ProjectNo[toidx_].voted != 0, "no project name");
+		require(token.transferFrom(msg.sender,(address(this)),miktarrx_));
+		ProjectNo[toidx_].voted = ProjectNo[toidx_].voted + miktarrx_;
+		emit e_addtoProject(msg.sender, toidx_, miktarrx_, block.timestamp );
+	}
+
+
+
+function publishProject(uint256 ProjectNum, string memory linkx) public {
+		require(msg.sender == owner, "only owner");
+		require(ProjectNo[ProjectNum].voted != 0, "no project name");
+
+		uint256 totalOy = ProjectNo[ProjectNum].voted;
+
+		uint256 forWhite = ( totalOy * 50 ) / 100;
+		uint256 forStake1 = ( totalOy * 5 ) / 100;
+		uint256 forStake2 = ( totalOy * 5 ) / 100;
+		uint256 forDAO = ( totalOy * 5 ) / 100;
+
+		uint256 totalDagilan = forWhite + forStake1 + forStake2 + forDAO;
+		uint256 forBurn = totalOy - totalDagilan;
+
+
+		string memory gecenName = ProjectNo[ProjectNum].name;
+		projectDoneCount++;
+		ProjectNoDone[projectDoneCount] = ProjectDone(gecenName,forBurn,linkx);
+
+		string memory kayanName = ProjectNo[projectCount].name;
+		uint256 kayanVote = ProjectNo[projectCount].voted;
+
+		ProjectNo[ProjectNum] = Project(kayanName,kayanVote);
+
+		ProjectNo[projectCount] = Project("",0);
+
+		projectCount--;
+
+		emit e_publishProject(msg.sender, ProjectNum, linkx, block.timestamp);
+        require(token.transfer(whiteHole, forWhite));
+		require(token.transfer(stake1Hole, forStake1));
+		require(token.transfer(stake2Hole, forStake2));
+		require(token.transfer(daoHole, forDAO));
+        require(token.burn(forBurn));
+	}
+
+
+
+
+function ismeMudahele (uint256 Numarasi, string memory yeniName) public {
+
+	require(msg.sender == owner, "only owner");
+	require(ProjectNo[Numarasi].voted != 0, "no project name");
+
+		ProjectNo[Numarasi].name = yeniName;
+
+}
+
+
+
+
+
+}
