@@ -619,7 +619,16 @@ const App = () => {
 
 
         <div className="publishVideosBaslik">
-          Pathfinder (How to use)
+          Pathfinder (
+            <a
+                      href="https://kilopi.net/blog/index.php?view=article&id=24:how-to-use-pathfinder&catid=2"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      How to use
+                    </a>
+            
+            )
         </div>
 
        
