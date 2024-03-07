@@ -1,0 +1,284 @@
+import React, { useEffect, useState } from 'react';
+import { ethers } from 'ethers'; // Import ethers.js library
+import StakingA from './abis/StakingA.json'
+
+// Smart Contract Address (replace with your own)
+const StakingAAddress = '0xf63D2Eb2C248a35E0fB9c6043bB3E9Ead65AeAaF';
+
+
+const App = () => {
+  const [balance, setBalance] = useState('');
+  const [isMetaMaskInstalled, setIsMetaMaskInstalled] = useState(true);
+  const [isMetaMaskLoggedIn, setIsMetaMaskLoggedIn] = useState(true);
+  const [walletAddress, setWalletAddress] = useState('');
+  const [TotalStaked, setTotalStaked] = useState('0');
+  const [DateStart, setDateStart] = useState('0');
+  const [KisiStakeAdedi, setKisiStakeAdedi] = useState('0');
+  const [KendiStakelerimG, setKendiStakelerimG] = useState([]);
+  const [stakeAmount, setstakeAmount] = useState(0);
+  const [TXH, setTXH] = useState(1);
+
+  useEffect(() => {
+    const loadBalance = async () => {
+      if (window.ethereum) {
+        try {
+          await window.ethereum.request({ method: 'eth_requestAccounts' });
+          const provider = new ethers.providers.Web3Provider(window.ethereum);
+          const signer = provider.getSigner();
+          const address = await signer.getAddress();
+
+          const balance = await provider.getBalance(address);
+          const formattedBalance = ethers.utils.formatEther(balance);
+          setBalance(formattedBalance);
+		  setWalletAddress(address);
+        } catch (error) {
+          console.error('Error loading balance:', error);
+        }
+      } else {
+        console.log('Please install MetaMask to use this application.');
+        setIsMetaMaskInstalled(false);
+      }
+    };
+
+    loadBalance();
+  }, []);
+
+
+  useEffect(() => {
+
+  const handleContractFunction = async () => {
+    
+	
+
+    try {
+      await window.ethereum.request({ method: 'eth_requestAccounts' });
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+
+
+
+
+      // Create an instance of the smart contract
+      const contract = new ethers.Contract(StakingAAddress, StakingA.abi, signer);
+
+      // Call a function on the smart contract
+	  let result = await contract.totalstaked();
+	  result = result.toString();
+
+   // const mappingData = await contract.stakes('<address>', '<uint256>');
+
+
+      let KisiStakeAdedi = await contract.stakeNos(walletAddress);
+      KisiStakeAdedi = KisiStakeAdedi.toString();
+      setKisiStakeAdedi(KisiStakeAdedi);
+
+
+		
+		
+		const kendiStakelerim = [];
+		
+
+      for(var i=1; i<=KisiStakeAdedi; i++){
+
+        
+
+        const kendiStakelerimTekil = await contract.stakes(walletAddress, i);
+
+
+        kendiStakelerim.push({
+
+          id: kendiStakelerimTekil.stakeid.toString(),
+          adres: kendiStakelerimTekil.adres.toString()
+
+
+          });
+
+          setKendiStakelerimG(kendiStakelerim);
+
+
+
+      }
+
+
+
+
+      
+
+
+      const datedeneme = await contract.stakes(walletAddress, 1);
+      let date = datedeneme.dateStart.toString();
+      setDateStart(date);
+
+
+
+
+
+
+
+
+      // Handle the result
+      console.log('Smart contract function result:', result);
+      setTotalStaked(result);
+    } catch (error) {
+      console.error('Error calling contract function:', error);
+    }
+  };
+  
+  handleContractFunction();
+  }, [walletAddress, TXH]);
+
+
+
+
+  useEffect(() => {
+    const checkMetaMaskLogin = async () => {
+      if (window.ethereum) {
+        try {
+          const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+          setIsMetaMaskLoggedIn(accounts.length > 0);
+        } catch (error) {
+          console.error('Error checking MetaMask login status:', error);
+        }
+      }
+    };
+
+    checkMetaMaskLogin();
+	
+  }, []);
+  
+  
+  
+  
+
+    const updateStakeAmount = async (evt) => {
+      
+	  
+	  setstakeAmount(evt.target.value);
+	  
+	  
+    };
+	
+	
+	
+	const stakeX = async () => {
+  try {
+    await window.ethereum.request({ method: 'eth_requestAccounts' });
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+
+    // Create an instance of the smart contract
+    const contract = new ethers.Contract(StakingAAddress, StakingA.abi, signer);
+
+    const transaction = await contract.stake(stakeAmount, {
+      from: walletAddress,
+      gasPrice: 101000000000
+    });
+
+    await transaction.wait(); // Wait for the transaction to be confirmed on the blockchain
+
+    // Transaction confirmed, execute the success handling code
+
+    setTXH(TXH+1);
+  } catch (err) {
+    // Error handling code
+    console.error(err);
+
+    setTXH(TXH+1);
+  }
+};
+
+
+	
+  
+  
+  
+
+  return (
+    <div>
+      <h1>MetaMask Wallet Balance </h1>
+      {isMetaMaskInstalled ? (
+        <>
+          {isMetaMaskLoggedIn ? (
+            <>
+              <p>Your Address: {walletAddress} </p>
+            
+              <p>Your Harmony balance: {balance} ONE</p>
+
+              <p>Total Staked: {TotalStaked} ONE</p>
+
+              <p>My Stake Quantity: {KisiStakeAdedi}</p>
+
+              <p>Your Stake 1 Date Start: {DateStart}</p>
+
+
+
+
+              <table className='table'>
+        <thead>
+          <tr className='trx'>
+            <th>No</th>
+            <th>Address</th>
+            
+			
+
+          </tr>
+        </thead>
+        <tbody >
+          {KendiStakelerimG.map((A) => {
+            return(
+              <tr key={A.id}>
+                <th>{A.id}</th>
+                <td>{A.adres}</td>
+               
+				
+
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+
+
+
+
+
+
+<input style={{ width:"45px", backgroundColor: "#fff0b3" }} 
+value={stakeAmount} onChange={updateStakeAmount}/> 
+                  
+		<button className='btn btn-warning' onClick={(event) => {
+                                                           event.preventDefault()
+                                                           stakeX()
+                                                            }  }>Stake
+        </button>
+
+
+
+
+
+
+
+
+
+
+
+               
+            </>
+          ) : (
+            <p>Please log in to your MetaMask wallet.</p>
+          )}
+        </>
+      ) : (
+        <p>Please install MetaMask to use this application.</p>
+		
+      )}
+	  
+	  
+	  
+  
+  
+    </div>
+  );
+};
+
+export default App;
