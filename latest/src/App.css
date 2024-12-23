@@ -81,6 +81,12 @@ body,
   text-align: center;
 }
 
+.kolon1 table {
+  width: 100%; /* Ensure the table spans the container */
+  table-layout: fixed; /* Fix table layout to prevent wide columns */
+  border-collapse: collapse; /* Prevent spacing between table cells */
+}
+
 
 .kolon2 {
   overflow: auto;
@@ -194,8 +200,6 @@ a:visited {
   font-weight: 400;
   font-size: 21px;
   line-height: 140%;
-  border-radius: 20px;
-  border: 1.5px solid#636362;
 }
 .th {
   
@@ -270,7 +274,7 @@ element.style {
 .aaa {
   border: none;
 }
-.ortaİcerik {
+.ortaicerik {
   height: 22px;
   font-family: "Montserrat", sans-serif;
   font-style: normal;

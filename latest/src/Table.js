@@ -10,7 +10,7 @@ class Table extends React.Component {
           <th className="th" id="numera">
             No
           </th>
-          <th className="th">Project Request</th>
+          <th className="th" style={{ width: "80%" }}>Project Request</th>
           <th className="th">Vote</th>
         </tr>
         </thead>
@@ -20,7 +20,7 @@ class Table extends React.Component {
 
                 <tr className="cikti" key={Project.id}>
                   <td className="id">{Project.id}</td>
-                  <td className="ortaİcerik">{Project.name}</td>
+                  <td className="ortaicerik">{Project.name}</td>
                   <td className="vauleTablo">{Project.votedShow}</td>
                 </tr>
 
