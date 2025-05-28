@@ -404,10 +404,10 @@ const App = () => {
             width: 300,
            
         });
-        } else if ( voteAmount < 1) { 
+        } else if ( voteAmount < 10000) { 
 
             Swal.fire({
-              text: 'Minimum voting amount is 1',
+              text: 'Minimum voting amount is 10000',
               width: 300,
              
           });
